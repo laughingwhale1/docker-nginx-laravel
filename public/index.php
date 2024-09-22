@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-this is page index.html
+this is page index.php
+<?php echo "bla bla bla" ?>
 </body>
 </html>
