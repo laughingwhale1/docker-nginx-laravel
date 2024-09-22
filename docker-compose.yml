@@ -19,3 +19,21 @@ services:
     volumes:
       - ./:/var/www/
     container_name: app_test_laravel
+    depends_on:
+        -   db
+
+  db:
+      image: mysql:8.0
+      restart: always
+      volumes:
+          -   ./tmp/db:/var/lib/mysql
+      environment:
+#         here we are setting password for user root
+#          This variable is mandatory and specifies the password that will be set for the MySQL root superuser account
+#          https://hub.docker.com/_/mysql
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: laradocker
+      ports:
+          - "3306:3306"
+      command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+      container_name: app_test_db
